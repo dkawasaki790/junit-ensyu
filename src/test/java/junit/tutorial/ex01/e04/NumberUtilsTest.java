@@ -28,7 +28,6 @@ class NumberUtilsTest {
 
 	@Test
 	void test1() {
-		
 		assertEquals(true, NumberUtils.isEven(10), "TC1:Šú‘Ò’l‚ÆÀÛ‚ÌŒ‹‰Ê‚ªˆÙ‚È‚è‚Ü‚·");
 	}
 	@Test
