@@ -31,9 +31,17 @@ class FizzBuzzTest {
 
 	@Test
 	void test() {
+//		List<String> expected = Arrays.asList("1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11",
+//				"Fizz", "13", "14", "FizzBuzz", "16");
+//		List<String> actual = fizzBuzz.createFizzBuzzList(16);
+//		assertAll("createFizzBuzz",
+//				() -> assertEquals(expected, actual),
+//				() -> assertIterableEquals(expected, actual)
+//			);
+		
 		FizzBuzz fizzBuzz = new FizzBuzz();
 		List<String> results = fizzBuzz.createFizzBuzzList(16);
 		List<String> expectedResults = Arrays.asList("1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz","16");
-		assertEquals(expectedResults, results, "TC:Šú‘Ò’l‚ÆÀÛ‚ÌŒ‹‰Ê‚ªˆÙ‚È‚è‚Ü‚·");
+		assertEquals(expectedResults, results, "TC:ï¿½ï¿½ï¿½Ò’lï¿½Æï¿½ï¿½Û‚ÌŒï¿½ï¿½Ê‚ï¿½ï¿½Ù‚È‚ï¿½Ü‚ï¿½");
 	}
 }

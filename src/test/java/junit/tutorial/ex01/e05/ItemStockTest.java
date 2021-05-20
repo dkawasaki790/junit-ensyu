@@ -2,65 +2,121 @@ package junit.tutorial.ex01.e05;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 class ItemStockTest {
+	@Nested
+	@DisplayName("åˆæœŸçŠ¶æ…‹ã®å ´åˆ")
+	class test1 {
+		ItemStock sut;
+		Item book;
 
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
+//	@BeforeAll
+//	static void setUpBeforeClass() throws Exception {
+//	}
+//
+//	@AfterAll
+//	static void tearDownAfterClass() throws Exception {
+//	}
+
+		@BeforeEach
+		void setUp() throws Exception {
+			book = new Item("book", 3800);
+			sut = new ItemStock();
+		}
+
+		@AfterEach
+		void tearDown() throws Exception {
+		}
+		@Test
+		@DisplayName("åˆæœŸçŠ¶æ…‹ã§getNum(book)ã§0")
+		void test1_1() {
+			assertEquals(0, sut.getNum(book));
+		}
+	
+		@Test
+		@DisplayName("add(book)å¾ŒgetNum(book)ã§1")
+		void test1_2() {
+			sut.add(book);
+			assertEquals(1, sut.getNum(book));
+		}
+	}
+	@Nested
+	@DisplayName("bookãŒ1å›è¿½åŠ ã•ã‚Œã¦ã„ã‚‹å ´åˆ")
+	class test2 {
+		ItemStock sut;
+		Item book;
+		@BeforeEach
+		void setUp() throws Exception {
+			book = new Item("book", 3800);
+			sut = new ItemStock();
+			sut.add(book);
+		}
+		
+		@Test
+		@DisplayName("getNum(book)ã§1ã‚’è¿”ã™")
+		void test2_1() {
+			assertEquals(1, sut.getNum(book));
+		}
+		
+		@Test
+		@DisplayName("add(book)å¾ŒgetNum(book)ã§2")
+		void test2_2() {
+			sut.add(book);
+			assertEquals(2, sut.getNum(book));
+		}
+		
+		@Test
+		@DisplayName("add(bike)å¾ŒgetNum(bike)ã§1,getNum(book)ã‚‚1")
+		void test2_3() {
+			Item bike = new Item("bike", 100000);
+			sut.add(bike);
+			assertEquals(1, sut.getNum(bike));
+			assertEquals(1, sut.getNum(book));
+		}
+		
+		
 	}
 
-	@AfterAll
-	static void tearDownAfterClass() throws Exception {
-	}
-
-	@BeforeEach
-	void setUp() throws Exception {
-	}
-
-	@AfterEach
-	void tearDown() throws Exception {
-	}
-
-	@Test
-	void test1(){
-		ItemStock itemStock = new ItemStock();
-		Item item = new Item("item", 100);
-		assertEquals(0, itemStock.getNum(item), "TC1:Šú‘Ò’l‚ÆÀÛ‚ÌŒ‹‰Ê‚ªˆÙ‚È‚è‚Ü‚·");
-	}
-	@Test
-	void test2(){
-		Item water = new Item("…", 300);
-		ItemStock itemStock = new ItemStock();
-		itemStock.add(water);
-		assertEquals(1, itemStock.getNum(water), "TC2:Šú‘Ò’l‚ÆÀÛ‚ÌŒ‹‰Ê‚ªˆÙ‚È‚è‚Ü‚·");
-	}
-	@Test
-	void test3() {
-		Item water = new Item("…", 300);
-		ItemStock itemStock = new ItemStock();
-		itemStock.add(water);
-		assertEquals(1, itemStock.getNum(water), "TC3:Šú‘Ò’l‚ÆÀÛ‚ÌŒ‹‰Ê‚ªˆÙ‚È‚è‚Ü‚·");
-	}
-	@Test
-	void test4(){
-		Item water = new Item("…", 300);
-		ItemStock itemStock = new ItemStock();
-		itemStock.add(water);
-		itemStock.add(water);
-		assertEquals(2, itemStock.getNum(water), "TC4:Šú‘Ò’l‚ÆÀÛ‚ÌŒ‹‰Ê‚ªˆÙ‚È‚è‚Ü‚·");
-	}
-	@Test
-	void test5(){
-		Item water = new Item("…", 300);
-		Item cola = new Item("ƒR[ƒ‰",500);
-		ItemStock itemStock = new ItemStock();
-		itemStock.add(water);
-		itemStock.add(cola);
-		assertEquals(1, itemStock.getNum(cola), "TC5:Šú‘Ò’l‚ÆÀÛ‚ÌŒ‹‰Ê‚ªˆÙ‚È‚è‚Ü‚·");
-	}
+//	@Test
+//	void test1(){
+//		ItemStock itemStock = new ItemStock();
+//		Item item = new Item("item", 100);
+//		assertEquals(0, itemStock.getNum(item), "TC1:ï¿½ï¿½ï¿½Ò’lï¿½Æï¿½ï¿½Û‚ÌŒï¿½ï¿½Ê‚ï¿½ï¿½Ù‚È‚ï¿½Ü‚ï¿½");
+//	}
+//	@Test
+//	void test2(){
+//		Item water = new Item("ï¿½ï¿½", 300);
+//		ItemStock itemStock = new ItemStock();
+//		itemStock.add(water);
+//		assertEquals(1, itemStock.getNum(water), "TC2:ï¿½ï¿½ï¿½Ò’lï¿½Æï¿½ï¿½Û‚ÌŒï¿½ï¿½Ê‚ï¿½ï¿½Ù‚È‚ï¿½Ü‚ï¿½");
+//	}
+//	@Test
+//	void test3() {
+//		Item water = new Item("ï¿½ï¿½", 300);
+//		ItemStock itemStock = new ItemStock();
+//		itemStock.add(water);
+//		assertEquals(1, itemStock.getNum(water), "TC3:ï¿½ï¿½ï¿½Ò’lï¿½Æï¿½ï¿½Û‚ÌŒï¿½ï¿½Ê‚ï¿½ï¿½Ù‚È‚ï¿½Ü‚ï¿½");
+//	}
+//	@Test
+//	void test4(){
+//		Item water = new Item("ï¿½ï¿½", 300);
+//		ItemStock itemStock = new ItemStock();
+//		itemStock.add(water);
+//		itemStock.add(water);
+//		assertEquals(2, itemStock.getNum(water), "TC4:ï¿½ï¿½ï¿½Ò’lï¿½Æï¿½ï¿½Û‚ÌŒï¿½ï¿½Ê‚ï¿½ï¿½Ù‚È‚ï¿½Ü‚ï¿½");
+//	}
+//	@Test
+//	void test5(){
+//		Item water = new Item("ï¿½ï¿½", 300);
+//		Item cola = new Item("ï¿½Rï¿½[ï¿½ï¿½",500);
+//		ItemStock itemStock = new ItemStock();
+//		itemStock.add(water);
+//		itemStock.add(cola);
+//		assertEquals(1, itemStock.getNum(cola), "TC5:ï¿½ï¿½ï¿½Ò’lï¿½Æï¿½ï¿½Û‚ÌŒï¿½ï¿½Ê‚ï¿½ï¿½Ù‚È‚ï¿½Ü‚ï¿½");
+//	}
 }

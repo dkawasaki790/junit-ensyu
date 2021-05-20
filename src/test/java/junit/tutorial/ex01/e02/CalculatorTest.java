@@ -6,6 +6,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
@@ -25,14 +26,22 @@ class CalculatorTest {
 	@AfterEach
 	void tearDown() throws Exception {
 	}
+
 	
 	@Test
-	void testDivide1() {
-		try {
-			Calculator.divide(100, 0);
-		}catch (IllegalArgumentException e) {
-			assertEquals("divide by zero.", e.getMessage(), "TC1:IllegalArgumentException");
-		}
+	@DisplayName("IllegalArgumentException")
+	void test() {
+		assertThrows(IllegalArgumentException.class, () -> Calculator.divide(10, 0));
 	}
+	
+
+//	@Test
+//	void testDivide1() {
+//		try {
+//			Calculator.divide(100, 0);
+//		}catch (IllegalArgumentException e) {
+//			assertEquals("divide by zero.", e.getMessage(), "TC1:IllegalArgumentException");
+//		}
+//	}
 
 }
