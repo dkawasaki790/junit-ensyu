@@ -28,25 +28,25 @@ class CounterTest {
 
 	@Test
 	void testIncrement1() {
-		Counter.Counter();
-		int num =Counter.increment();
+		Counter counter = new Counter();
+		int num =counter.increment();
 		assertEquals(1, num, "TC1:Šú‘Ò’l‚ÆÀÛ‚ÌŒ‹‰Ê‚ªˆÙ‚È‚è‚Ü‚·");
 	}
 	@Test
 	void testIncrement2() {
-		Counter.Counter();
-		Counter.increment();
-		int num =Counter.increment();
+		Counter counter = new Counter();
+		counter.increment();
+		int num =counter.increment();
 		assertEquals(2, num, "TC2:Šú‘Ò’l‚ÆÀÛ‚ÌŒ‹‰Ê‚ªˆÙ‚È‚è‚Ü‚·");
 		
 	}
 	@Test
 	void testIncrement3() {
-		Counter.Counter();
+		Counter counter = new Counter();
 		for(int i=1; i<=50; i++) {
-			Counter.increment();
+			counter.increment();
 		}
-		int num =Counter.increment();
+		int num =counter.increment();
 		assertEquals(51, num, "TC3:Šú‘Ò’l‚ÆÀÛ‚ÌŒ‹‰Ê‚ªˆÙ‚È‚è‚Ü‚·");
 		
 	}
