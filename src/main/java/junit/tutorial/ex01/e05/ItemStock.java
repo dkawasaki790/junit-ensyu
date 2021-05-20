@@ -23,5 +23,4 @@ public class ItemStock {
 		num++;
 		itemMap.put(item.getName(), num);
 	}
-
 }
